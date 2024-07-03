@@ -1,4 +1,9 @@
+const queryOptions = { active: true, currentWindow: true };
 export const getCurrentTabUrl = async () => {
-  const tab = await chrome.tabs.query({ active: true, currentWindow: true });
-  console.log(tab);
+  try {
+    const [tab] = await chrome.tabs.query(queryOptions);
+    return tab;
+  } catch (error) {
+    console.log(error);
+  }
 };
