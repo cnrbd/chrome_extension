@@ -28,8 +28,8 @@ export default function App() {
 
   useEffect(() => {
     const currentTabHTML = () => {
-      const ingredients = scrapeIngredients(html);
-      setIngredients(ingredients);
+      const ingredientText = scrapeIngredients(html);
+      setIngredients(ingredientText);
     };
     currentTabHTML();
   }, [html]);
