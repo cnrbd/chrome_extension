@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { scrapeRecipePage, scrapeIngredients } from "./services/scraper";
 import { ingredientsArrayIntoStr } from "./utils/parseIngredientsArray";
 
+import { Header } from "./components/Header.tsx";
+import { Button } from "./components/Button.tsx";
+
 export default function App() {
   const [currentTabUrl, setCurrentTabUrl] = useState<string>("");
   const [html, setHtml] = useState<string>("");
@@ -36,14 +39,13 @@ export default function App() {
   }, [html]);
 
   return (
-    <div>
-      <h1> hello</h1>
+    <div className="w-60 h-80 flex flex-col">
+      <Header />
       {currentTabUrl && <p>link: {currentTabUrl}</p>}
       {/* {html && <p>html: {html}</p>} */}
-      {ingredients && (
-        <p>ingredients: {ingredientsArrayIntoStr(ingredients)}</p>
-      )}
-    </div>
+      {ingredients && <p>ingredients: {ingredients}</p>}
+      <Button>Calculate</Button>
+    </div >
   );
 }
 
