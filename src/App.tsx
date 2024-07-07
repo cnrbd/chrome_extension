@@ -2,11 +2,12 @@ import "./App.css";
 import { getCurrentTabUrl } from "./utils/getCurrentTabUrl";
 import { useEffect, useState } from "react";
 import { scrapeRecipePage, scrapeIngredients } from "./services/scraper";
+import { ingredientsArrayIntoStr } from "./utils/parseIngredientsArray";
 
 export default function App() {
   const [currentTabUrl, setCurrentTabUrl] = useState<string>("");
   const [html, setHtml] = useState<string>("");
-  const [ingredients, setIngredients] = useState<string>("");
+  const [ingredients, setIngredients] = useState<string[]>([]);
 
   //async function nested in useeffect to get the current tab url
   //dependecies should have the currentTabUrl since each remount should reset the currentTabUrl
@@ -28,8 +29,8 @@ export default function App() {
 
   useEffect(() => {
     const currentTabHTML = () => {
-      const ingredientText = scrapeIngredients(html);
-      setIngredients(ingredientText);
+      const ingredientArr = scrapeIngredients(html);
+      setIngredients(ingredientArr);
     };
     currentTabHTML();
   }, [html]);
@@ -39,7 +40,11 @@ export default function App() {
       <h1> hello</h1>
       {currentTabUrl && <p>link: {currentTabUrl}</p>}
       {/* {html && <p>html: {html}</p>} */}
-      {ingredients && <p>ingredients: {ingredients}</p>}
+      {ingredients && (
+        <p>ingredients: {ingredientsArrayIntoStr(ingredients)}</p>
+      )}
     </div>
   );
 }
+
+//

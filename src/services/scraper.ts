@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
 import axios from "axios";
-// import { parseIngredients } from "../utils/parseIngredients";
+import { parseIngredientsArray } from "../utils/parseIngredientsArray";
 
 const ingredientClass = "wprm-recipe-ingredients";
 
@@ -33,16 +33,15 @@ export const scrapeRecipePage = async (url: string) => {
 
 export const scrapeIngredients = (html: string) => {
   const $ = cheerio.load(html);
-  const arr = $(`.${ingredientClass}>li`).contents().text();
+  const recipeArray: string[] = [];
   const liElements = $(`.${ingredientClass}`).find("li").toArray();
-  const $ingredients = $(`.${ingredientClass}>li`).text();
-  const arr2 = arr.split("▢");
-  console.log("test: ", arr);
-  console.log("test2: ", arr2);
-  console.log("all elements: ", liElements);
+  // const $ingredients = $(`.${ingredientClass}>li`).text();
+  // console.log("all elements: ", liElements);
   liElements.forEach((li) => {
-    console.log($(li).text().trim());
+    // console.log($(li).text().trim());
+    recipeArray.push($(li).text().trim());
   }); //use this which would get you an array of the text of li elements on each line
+  console.log("recipeArray: ", recipeArray);
 
-  return $ingredients;
+  return parseIngredientsArray(recipeArray);
 };
