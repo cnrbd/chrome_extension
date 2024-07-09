@@ -4,10 +4,11 @@ import { Button } from './Button';
 
 export default function Page2() {
     return (
-        <div>
-            <Link to="/home">
-                <Button> Hello </Button>
-            </Link>
-        </div >
+      <div>
+        <p>hello</p>
+        <Link to="/">
+          <Button> Hello </Button>
+        </Link>
+      </div>
     );
 }

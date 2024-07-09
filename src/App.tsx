@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { scrapeRecipePage, scrapeIngredients } from "./services/scraper";
 import { Link } from "react-router-dom";
 
+
 import { Header } from "./components/Header.tsx";
 import { Button } from "./components/Button.tsx";
 
@@ -47,6 +48,6 @@ export default function App() {
       <Link to="/Page2">
         <Button> Calculate </Button>
       </Link>
-    </div >
+    </div>
   );
 }

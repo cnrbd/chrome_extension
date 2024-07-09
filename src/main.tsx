@@ -3,17 +3,27 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import Page2 from "./components/Page2.tsx"
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//   },
+//   {
+//     path: "page2",
+//     element: <Page2 />,
+//   },
+// ]);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/home" element={<App />} />
-        <Route path="/Page2" element={<Page2 />} />
+        <Route path="/" element={<App />} />
+        <Route path="page2" element={<Page2 />} />
       </Routes>
-
-      <App />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
-)
+);
