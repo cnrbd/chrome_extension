@@ -2,6 +2,7 @@ import "./App.css";
 import { getCurrentTabUrl } from "./utils/getCurrentTabUrl";
 import { useEffect, useState } from "react";
 import { scrapeRecipePage, scrapeIngredients } from "./services/scraper";
+import { Link } from "react-router-dom";
 
 import { Header } from "./components/Header.tsx";
 import { Button } from "./components/Button.tsx";
@@ -43,7 +44,9 @@ export default function App() {
       {currentTabUrl && <p>link: {currentTabUrl}</p>}
       {/* {html && <p>html: {html}</p>} */}
       {ingredients && <p>ingredients: {ingredients}</p>}
-      <Button>Calculate</Button>
+      <Link to="/Page2">
+        <Button> Calculate </Button>
+      </Link>
     </div >
   );
 }
