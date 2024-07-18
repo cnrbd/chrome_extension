@@ -1,6 +1,8 @@
 export const parseIngredientsArray = (ingredientsArr: string[]) => {
   return ingredientsArr.map((ingredient) => {
-    if (ingredient.includes("▢")) {
+    if (ingredient.includes("Ingredients")) {
+      return ingredient.replace("Ingredients", "").trim();
+    } else if (ingredient.includes("▢")) {
       return ingredient.replace("▢", "").trim();
     }
     return ingredient.trim();

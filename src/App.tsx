@@ -28,11 +28,11 @@ export default function App() {
   }, [currentTabUrl]);
 
   useEffect(() => {
-    const currentTabHTML = () => {
+    const currentTabIngredients = () => {
       const ingredientArr = scrapeIngredients(html);
       setIngredients(ingredientArr);
     };
-    currentTabHTML();
+    currentTabIngredients();
   }, [html]);
 
   return (
