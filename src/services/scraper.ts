@@ -2,7 +2,35 @@ import * as cheerio from "cheerio";
 import axios from "axios";
 import { parseIngredientsArray } from "../utils/parseIngredientsArray";
 
-const ingredientClass = "wprm-recipe-ingredients";
+
+const ingredientsClassNames = [
+  "wprm-recipe-ingredients",
+  "structured-ingredients",
+  "o-Ingredients__m-Body",
+  "recipe__ingredients",
+  "ingredients_ingredients__FLjsC",
+  "parts",
+  "ingredients__section",
+  "ingredients-section",
+  "ingredients",
+  "ingredients-body",
+  "ingredient-lists",
+  "mntl-structured-ingredients__list",
+  "recipe-ingredients__list",
+  "mm-recipes-structured-ingredients__list",
+  "recipe-ingredients__collection",
+  "ingred-list",
+  "List-iSNGTT",
+  "recipe-division",
+  "mv-create-ingredients",
+  "recipe-ingredients",
+  "css-rszk63",
+  "tasty-recipes-ingredients",
+  "tasty-recipes-ingredients-body",
+  "cb101-recipe-ingredients",
+  "ingredient-list",
+  "recipe-ingredients wrapper",
+];
 
 export const setApiURL = (url: string) => {
   const options = {
@@ -14,7 +42,7 @@ export const setApiURL = (url: string) => {
       "Content-Type": "application/json",
     },
     data: {
-      url: `${url}`,
+      url: `${encodeURI(url)}`,
       javascript_rendering: "False",
     },
   };
@@ -23,8 +51,10 @@ export const setApiURL = (url: string) => {
 
 export const scrapeRecipePage = async (url: string) => {
   try {
+    console.log("url: ", url);
     const options = setApiURL(url);
     const response = await axios.request(options);
+    console.log(response);
     return response.data.extracted_html;
   } catch (error) {
     console.log("error: ", error);
@@ -34,14 +64,33 @@ export const scrapeRecipePage = async (url: string) => {
 export const scrapeIngredients = (html: string) => {
   const $ = cheerio.load(html);
   const recipeArray: string[] = [];
-  const liElements = $(`.${ingredientClass}`).find("li").toArray();
-  // const $ingredients = $(`.${ingredientClass}>li`).text();
-  // console.log("all elements: ", liElements);
-  liElements.forEach((li) => {
-    // console.log($(li).text().trim());
-    recipeArray.push($(li).text().trim());
-  }); //use this which would get you an array of the text of li elements on each line
-  console.log("recipeArray: ", recipeArray);
+  let pagesIngredientsClass;
 
+  for (const className of ingredientsClassNames) {
+    const containsClass = $(`.${className}`).length;
+    if (containsClass > 0) {
+      pagesIngredientsClass = className;
+      break;
+    }
+  }
+
+  console.log("pagesIngredientsClass: ", pagesIngredientsClass);
+
+  if (pagesIngredientsClass) {
+    const liElements = $(`.${pagesIngredientsClass}`).find("li").toArray();
+
+    if (!liElements.length) {
+      const otherElements = $(`.${pagesIngredientsClass}`).toArray();
+      otherElements.forEach((el) => {
+        recipeArray.push($(el).text().trim());
+      });
+    } else {
+      liElements.forEach((li) => {
+        recipeArray.push($(li).text().trim());
+      });
+    }
+
+    console.log("recipeArray: ", recipeArray);
+  }
   return parseIngredientsArray(recipeArray);
 };
