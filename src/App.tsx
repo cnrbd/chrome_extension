@@ -3,11 +3,7 @@ import { getCurrentTabUrl } from "./utils/getCurrentTabUrl";
 import { useEffect, useState } from "react";
 import { scrapeRecipePage, scrapeIngredients } from "./services/scraper";
 import { ingredientsArrayIntoStr } from "./utils/parseIngredientsArray";
-
-
-
-
-
+import Checkbox from "./components/Checkbox.tsx";
 import { Header } from "./components/Header.tsx";
 import { Button } from "./components/Button.tsx";
 import { Link } from "react-router-dom";
@@ -44,10 +40,20 @@ export default function App() {
   }, [html]);
 
   return (
-    <div className="w-60 h-80 flex flex-col">
+    <div className=" flex flex-col px-5">
       <Header />
-      {currentTabUrl && <p>link: {currentTabUrl}</p>}
+      {/* {currentTabUrl && <p>link: {currentTabUrl}</p>} */}
       {/* {html && <p>html: {html}</p>} */}
+      <div className="w-full bg-gray-300 border my-3">
+        <p className="text-xs">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <Checkbox />
       {ingredients && (
         <p>ingredients: {ingredientsArrayIntoStr(ingredients)}</p>
       )}

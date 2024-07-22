@@ -10,7 +10,7 @@ export default function Checkbox() {
 
   return (
     <div>
-      <form>
+      <form className="bg-yellow-100 flex flex-col">
         <label>
           <input
             {...register("carbohydrates")}

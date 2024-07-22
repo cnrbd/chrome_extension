@@ -1,6 +1,8 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
+  min-width: 360px;
+    height: 650px;
 }
 
 .logo {
