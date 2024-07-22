@@ -48,7 +48,9 @@ export default function App() {
       <Header />
       {currentTabUrl && <p>link: {currentTabUrl}</p>}
       {/* {html && <p>html: {html}</p>} */}
-      {ingredients && <p>ingredients: {ingredients}</p>}
+      {ingredients && (
+        <p>ingredients: {ingredientsArrayIntoStr(ingredients)}</p>
+      )}
       <Link to="/Page2">
         <Button> Calculate </Button>
       </Link>
