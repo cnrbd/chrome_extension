@@ -4,8 +4,13 @@ import { useEffect, useState } from "react";
 import { scrapeRecipePage, scrapeIngredients } from "./services/scraper";
 import { ingredientsArrayIntoStr } from "./utils/parseIngredientsArray";
 
+
+
+
+
 import { Header } from "./components/Header.tsx";
 import { Button } from "./components/Button.tsx";
+import { Link } from "react-router-dom";
 
 export default function App() {
   const [currentTabUrl, setCurrentTabUrl] = useState<string>("");
@@ -44,8 +49,10 @@ export default function App() {
       {currentTabUrl && <p>link: {currentTabUrl}</p>}
       {/* {html && <p>html: {html}</p>} */}
       {ingredients && <p>ingredients: {ingredients}</p>}
-      <Button>Calculate</Button>
-    </div >
+      <Link to="/Page2">
+        <Button> Calculate </Button>
+      </Link>
+    </div>
   );
 }
 
