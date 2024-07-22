@@ -5,7 +5,7 @@ import { Button } from '../components/Button';
 
 export default function Page2() {
   return (
-    <div className="w-60 h-80 flex flex-col">
+    <div className="flex flex-col px-5 items-stretch">
       <Header />
       <Link to="/">
         <Button> Return </Button>

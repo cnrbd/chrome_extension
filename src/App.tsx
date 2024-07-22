@@ -2,7 +2,7 @@ import "./App.css";
 import { getCurrentTabUrl } from "./utils/getCurrentTabUrl";
 import { useEffect, useState } from "react";
 import { scrapeRecipePage, scrapeIngredients } from "./services/scraper";
-import { ingredientsArrayIntoStr } from "./utils/parseIngredientsArray";
+// import { ingredientsArrayIntoStr } from "./utils/parseIngredientsArray";
 import Checkbox from "./components/Checkbox.tsx";
 import { Header } from "./components/Header.tsx";
 import { Button } from "./components/Button.tsx";
@@ -40,11 +40,11 @@ export default function App() {
   }, [html]);
 
   return (
-    <div className=" flex flex-col px-5">
+    <div className=" flex flex-col px-5 items-stretch">
       <Header />
       {/* {currentTabUrl && <p>link: {currentTabUrl}</p>} */}
       {/* {html && <p>html: {html}</p>} */}
-      <div className="w-full bg-gray-300 border my-3">
+      <div className="w-full bg-gray-300 border mt-1 mb-3">
         <p className="text-xs">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -53,10 +53,9 @@ export default function App() {
           exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </div>
+      <hr className="h-px bg-gray-400 mb-2" />
       <Checkbox />
-      {ingredients && (
-        <p>ingredients: {ingredientsArrayIntoStr(ingredients)}</p>
-      )}
+      {ingredients && <p>ingredients</p>}
       <Link to="/Page2">
         <Button> Calculate </Button>
       </Link>
