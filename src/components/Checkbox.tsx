@@ -13,6 +13,17 @@ export default function Checkbox() {
       <h2 className="text-lg">Please select the metrics to calculate:</h2>
       <form className="bg-yellow-100 flex flex-col my-3 p-2 ">
         <div className="flex justify-start items-center">
+          <div className="flex justify-start items-center">
+            <label className=" flex items-center my-2 text-lg font-bold">
+              <input
+                {...register("calories")}
+                type="checkbox"
+                name="calories"
+                className="mr-3"
+              />
+              Calories
+            </label>
+          </div>
           <label className=" flex items-center my-2 text-lg font-bold">
             <input
               {...register("carbohydrates")}
@@ -23,21 +34,11 @@ export default function Checkbox() {
             Carbohydrates
           </label>
         </div>
+
         <div className="flex justify-start items-center">
           <label className=" flex items-center my-2 text-lg font-bold">
             <input
-              {...register("carbohydrates")}
-              type="checkbox"
-              name="calories"
-              className="mr-3"
-            />
-            Calories
-          </label>
-        </div>
-        <div className="flex justify-start items-center">
-          <label className=" flex items-center my-2 text-lg font-bold">
-            <input
-              {...register("carbohydrates")}
+              {...register("protein")}
               type="checkbox"
               name="protein"
               className="mr-3"
@@ -48,7 +49,7 @@ export default function Checkbox() {
         <div className="flex justify-start items-center">
           <label className="flex items-center my-2 text-lg font-bold">
             <input
-              {...register("carbohydrates")}
+              {...register("fat")}
               type="checkbox"
               name="fat"
               className="mr-3"
@@ -59,7 +60,7 @@ export default function Checkbox() {
         <div className="flex justify-start items-center">
           <label className="flex items-center my-2 text-lg font-bold">
             <input
-              {...register("carbohydrates")}
+              {...register("fiber")}
               type="checkbox"
               name="fiber"
               className="mr-3"
@@ -70,7 +71,7 @@ export default function Checkbox() {
         <div className="flex justify-start items-center">
           <label className="flex items-center my-2 text-lg font-bold">
             <input
-              {...register("carbohydrates")}
+              {...register("sodium")}
               type="checkbox"
               name="sodium"
               className="mr-3"
