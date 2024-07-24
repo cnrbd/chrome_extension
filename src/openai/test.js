@@ -1,18 +1,13 @@
 import OpenAI from "openai";
+import dotenv from "dotenv";
 
+dotenv.config();
+
+console.log(process.env.OPENAI_API_KEY);
 const openai = new OpenAI({
-  apiKey: false,
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-// const test = async () => {
-//   const response = await openai.completions.create({
-//     model: "gpt-3.5-turbo",
-//     prompt: "What chemical compounds are computers mostly made from?",
-//     max_tokens: 100,
-//     temperature: 1,
-//   });
-//   console.log(response.data);
-// };
 
 const test = async () => {
   try {
