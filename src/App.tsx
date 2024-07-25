@@ -3,13 +3,14 @@ import { getCurrentTabUrl } from "./utils/getCurrentTabUrl";
 import { useEffect, useState } from "react";
 import { scrapeRecipePage, scrapeIngredients } from "./services/scraper";
 // import { ingredientsArrayIntoStr } from "./utils/parseIngredientsArray";
+import { useNavigate } from "react-router-dom";
 import Checkbox from "./components/Checkbox.tsx";
 import { CheckboxFormValues } from "./components/Checkbox.tsx";
 import { Header } from "./components/Header.tsx";
 import { Button } from "./components/Button.tsx";
-// import { Link } from "react-router-dom";
 
 export default function App() {
+  const navigate = useNavigate();
   const [currentTabUrl, setCurrentTabUrl] = useState<string>("");
   const [html, setHtml] = useState<string>("");
   const [ingredients, setIngredients] = useState<string[]>([]);
@@ -67,6 +68,7 @@ export default function App() {
       <Checkbox
         setFunction={setFormValues}
         button={<Button> Calculate </Button>}
+        navigateFunction={navigate}
       />
       {formValues && <p>formValues: {JSON.stringify(formValues)}</p>}
       {ingredients && <p>ingredients</p>}
@@ -74,8 +76,3 @@ export default function App() {
   );
 }
 
-{
-  /* <Link to="/Page2">
-            <Button> Calculate </Button>
-          </Link> */
-}

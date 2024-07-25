@@ -1,9 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { NavigateFunction } from "react-router-dom";
 
 type CheckboxProps = {
   setFunction: (data: CheckboxFormValues) => void;
   button: React.ReactNode;
+  navigateFunction: NavigateFunction;
 };
 
 export type CheckboxFormValues = {
@@ -15,12 +17,36 @@ export type CheckboxFormValues = {
   sodium?: boolean;
 };
 
-export default function Checkbox({ setFunction, button }: CheckboxProps) {
-  const { register, handleSubmit } = useForm<CheckboxFormValues>();
+export default function Checkbox({
+  setFunction,
+  button,
+  navigateFunction,
+}: CheckboxProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+    clearErrors,
+  } = useForm<CheckboxFormValues>();
 
   const onSubmit = (data: CheckboxFormValues) => {
+    const oneSelected = Object.values(data).some((value) => value === true);
+
+    if (!oneSelected) {
+      console.log(oneSelected);
+      setError("root.serverError", {
+        type: "custom",
+        message: "Please select at least one metric",
+      });
+      console.log(errors.root?.serverError);
+      return;
+    }
+
+    clearErrors("root.serverError");
     console.log(data);
     setFunction(data);
+    navigateFunction("/Page2", { state: { formValues: data } });
   };
 
   return (
@@ -33,7 +59,7 @@ export default function Checkbox({ setFunction, button }: CheckboxProps) {
         <div className="flex justify-start items-center">
           <label className=" flex items-center my-2 text-lg font-bold">
             <input
-              {...(register("calories"), { required: true })}
+              {...register("calories")}
               type="checkbox"
               name="calories"
               className="mr-3"
@@ -98,6 +124,9 @@ export default function Checkbox({ setFunction, button }: CheckboxProps) {
           </label>
         </div>
         {button}
+        {errors.root?.serverError && (
+          <p className="text-red-500">{errors.root.serverError.message}</p>
+        )}
       </form>
     </>
   );
