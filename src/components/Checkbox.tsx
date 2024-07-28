@@ -6,6 +6,7 @@ type CheckboxProps = {
   setFunction: (data: CheckboxFormValues) => void;
   button: React.ReactNode;
   navigateFunction: NavigateFunction;
+  ingredients: string[];
 };
 
 export type CheckboxFormValues = {
@@ -21,6 +22,7 @@ export default function Checkbox({
   setFunction,
   button,
   navigateFunction,
+  ingredients,
 }: CheckboxProps) {
   const {
     register,
@@ -46,7 +48,9 @@ export default function Checkbox({
     clearErrors("root.serverError");
     console.log(data);
     setFunction(data);
-    navigateFunction("/Page2", { state: { formValues: data } });
+    navigateFunction("/Page2", {
+      state: { formValues: data, ingredients },
+    });
   };
 
   return (

@@ -69,6 +69,7 @@ export default function App() {
         setFunction={setFormValues}
         button={<Button> Calculate </Button>}
         navigateFunction={navigate}
+        ingredients={ingredients}
       />
       {formValues && <p>formValues: {JSON.stringify(formValues)}</p>}
       {ingredients && <p>ingredients</p>}

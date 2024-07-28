@@ -1,19 +1,18 @@
 import OpenAI from "openai";
-import dotenv from "dotenv";
-import { CheckboxFormValues } from "../components/Checkbox";
+import { MetricKeys } from "../utils/displayMetricsHelpers";
 
-dotenv.config();
-
-// console.log(process.env.OPENAI_API_KEY);
+const openAIApiKey = import.meta.env.VITE_REACT_APP_API_KEY;
+console.log(openAIApiKey);
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: openAIApiKey,
+  dangerouslyAllowBrowser: true,
 });
 
 //accepts currentPrompts object and ingredients string
 export const stats = async (
   ingredients: string[],
-  currentPrompts: CheckboxFormValues
+  currentPrompts: { [key in MetricKeys]?: string[] }
 ) => {
   try {
     const response = await openai.chat.completions.create({
@@ -22,18 +21,21 @@ export const stats = async (
         {
           role: "system",
           content:
-            "You are a dietician that access nutritional values of food recipes which are a combination of calories, carbohydrates, proteins, fat, fiber, and sodium.",
+            "You are a dietician that has access nutritional values of food from recipes by USDA standards",
         },
         {
           role: "user",
-          content: `Given this ingredients string from a recipe: ${ingredients} and a person wants these value questions answered about the keys in this object: ${currentPrompts}. Return an object of the same keys in the given object with respective values which are an array of strings corresponding to your answers.`,
+          content: `Given the following ingredients string from a recipe: ${ingredients}, answer the nutritional value questions based on the keys in the provided object: ${JSON.stringify(
+            currentPrompts
+          )}. Return the result as an object with the same keys as the input object, where each key's value is an array of strings that correspond to the answers for that key.`,
         },
       ],
-      max_tokens: 100,
+      max_tokens: 200,
       temperature: 1,
     });
     if (response && response.choices && response.choices.length > 0) {
-      console.log(response.choices[0].message.content);
+      // console.log(response.choices[0].message.content);
+      return response.choices[0].message.content;
     } else {
       console.error("No choices found in the response.");
     }
