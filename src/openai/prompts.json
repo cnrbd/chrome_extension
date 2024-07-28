@@ -1,0 +1,28 @@
+{
+"calories" :[
+    "How many calories are all the ingredients in this recipe, display the total calories?",
+    "If you were to compare this recipe's total calories to the suggested amount of calories in a meal for an average person, what percent more or less of the daily recommended caloric intake would this recipe be?"
+],
+"carbohydrates" : [
+    "How much carbohydrates are all the ingredients in this recipe, display the total amount of carbohydrates?",
+    "Tell me a fun and interesting fact that relates carbohydrates and this recipe"
+],
+"protein" : [
+    "How many protein are all the ingredients in this recipe, display the total protein?",
+    "Would an average bodybuilder consider this recipe to be a good source of protein?"
+],
+"fat": [
+    "How much fat are all the ingredients in this recipe, display the total amount of fat?",
+    "If you were to compare this recipe's total fat content to a US Big Mac what percent of fat more or less will this recipe contain?",
+    "What is the proportion of saturated and unsaturated fats in this recipe?"
+],
+"fiber": [
+    "How much fiber are all the ingredients in this recipe, display the total amount of fiber?",
+    "Which ingredient in this recipe has the most fiber?", "Tell me a fun and interesting fact that relates fiber and this recipe?"
+],
+"sodium": [
+    "How much sodium are all the ingredients in this recipe, display the total amount of sodium?",
+    "If you were to compare this recipe's total sodium content to the suggested amount of sodium in a meal for an average person, what percent more or less of the daily recommended sodium intake would this recipe be?"
+]
+
+}
