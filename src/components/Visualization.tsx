@@ -47,10 +47,21 @@ export default function Graph({ aiResponse }: GraphProps) {
             type: "bar",
           },
         ]}
-        layout={{ title: "Chart Title", width: 400, height: 400 }}
+        layout={{
+          title: "Recipe Metrics vs Recommended",
+          width: 400,
+          height: 400,
+          xaxis: {
+            title: "Metrics",
+          },
+          yaxis: {
+            title: "Recipe vs Recommended (%)",
+          },
+        }}
         config={{
           displayModeBar: false,
         }}
+        className="text-break"
       />
     )
   );

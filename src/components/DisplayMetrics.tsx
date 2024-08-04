@@ -15,19 +15,11 @@ type DisplayMetricsProps = {
 };
 
 export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
-  //   const [response, setResponse] = useState("");
+
   const [responseJSON, setResponseJSON] = useState<{ [key: string]: string[] }>(
     {}
   );
 
-  //   useEffect(() => {
-  //     const aiResponse = async () => {
-  //       //   console.log("being passed: ", currentPrompts);
-  //       const response = await stats(ingredients, currentPrompts);
-  //       console.log("responses: ", response);
-  //     };
-  //     aiResponse();
-  //   }, [ingredients, chosenMetrics]);
 
   useEffect(() => {
     if (aiResponse) {
