@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { NavigateFunction } from "react-router-dom";
 
 type CheckboxProps = {
-  setFunction: (data: CheckboxFormValues) => void;
+  // setFunction: (data: CheckboxFormValues) => void;
   button: React.ReactNode;
   navigateFunction: NavigateFunction;
   ingredients: string[];
@@ -19,7 +19,6 @@ export type CheckboxFormValues = {
 };
 
 export default function Checkbox({
-  setFunction,
   button,
   navigateFunction,
   ingredients,
@@ -47,7 +46,7 @@ export default function Checkbox({
 
     clearErrors("root.serverError");
     console.log(data);
-    setFunction(data);
+    // setFunction(data);
     navigateFunction("/Page2", {
       state: { formValues: data, ingredients },
     });

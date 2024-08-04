@@ -1,10 +1,9 @@
 // takes in props of the ingredients and the currentPrompts object
 // useEffect for openai api response
 // imports are openai api functions, diplaymetricshelpers functions
-import { stats } from "../openai/test";
+
 import { useEffect, useState } from "react";
 import {
-  createChosenMetricsObject,
   stringObjectToJSON,
   keysToUpperCase,
 } from "../utils/displayMetricsHelpers";
@@ -12,50 +11,41 @@ import {
 type DisplayMetricsProps = {
   ingredients: string[];
   chosenMetrics: { [key: string]: boolean };
+  aiResponse: string;
 };
 
-export default function DisplayMetrics({
-  ingredients,
-  chosenMetrics,
-}: DisplayMetricsProps) {
-  const [response, setResponse] = useState("");
+export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
+
   const [responseJSON, setResponseJSON] = useState<{ [key: string]: string[] }>(
     {}
   );
-  const currentPrompts = createChosenMetricsObject(chosenMetrics);
-  useEffect(() => {
-    const aiResponse = async () => {
-      //   console.log("being passed: ", currentPrompts);
-      const response = await stats(ingredients, currentPrompts);
-      console.log("response: ", typeof response);
-      setResponse(response ?? "");
-    };
-    aiResponse();
-  }, [ingredients, chosenMetrics]);
+
 
   useEffect(() => {
-    if (response) {
+    if (aiResponse) {
       try {
-        const parsedResponse = stringObjectToJSON(response);
+        console.log("Test:", aiResponse);
+        const parsedResponse = stringObjectToJSON(aiResponse);
+        console.log("parsed response: ", parsedResponse);
         const formattedResponse = keysToUpperCase(parsedResponse);
         setResponseJSON(formattedResponse);
       } catch (error) {
         console.error("Failed to parse response JSON:", error);
       }
     }
-  }, [response]);
+  }, [aiResponse]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       {/* {ingredients} */}
       {/* {chosenMetrics && JSON.stringify(chosenMetrics)} */}
       {/* {responseJSON && <p>response: {JSON.stringify(responseJSON)}</p>} */}
       {responseJSON && (
-        <ul>
+        <ul className="w-full h-44 overflow-y-auto bg-lime-600 px-1 py-1">
           {Object.entries(responseJSON).map(([key, value]) => (
             <div key={key}>
-              <h3>{key}</h3>
-              <ul>
+              <h1 className="text-lg font-bold">{key}:</h1>
+              <ul className="list-disc pl-5">
                 {value.map((stat, index) => (
                   <li key={index}>{stat}</li>
                 ))}

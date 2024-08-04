@@ -19,7 +19,7 @@ export function createChosenMetricsObject(chosenMetrics: { [key in MetricKeys]?:
   return currentPrompts;
 }
 
-export function stringObjectToJSON(stringObject : string) {
+export function stringObjectToJSON(stringObject : string): { [key: string]: string[] } {
     return JSON.parse(stringObject);
 }
 
