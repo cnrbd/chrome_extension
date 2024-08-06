@@ -52,26 +52,29 @@ export default function Checkbox({
     });
   };
 
+
+
   return (
     <>
-      <h2 className="text-lg">Please select the metrics to calculate:</h2>
+      <h2 className="text-lg font-LibreBodoni font-bold">Please select the <span className="underline">metrics</span> to calculate:</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-yellow-100 flex flex-col my-3 p-2 "
+        className="flex flex-col mb-2 p-2 font-LibreBodoni"
       >
         <div className="flex justify-start items-center">
-          <label className=" flex items-center my-2 text-lg font-bold">
+          <label className="flex items-center my-2 text-lg font-bold">
             <input
               {...register("calories")}
               type="checkbox"
               name="calories"
-              className="mr-3"
+              className="checkbox"
             />
+            <p className="text-xs">/</p>
             Calories
           </label>
         </div>
         <div className="flex justify-start items-center">
-          <label className=" flex items-center my-2 text-lg font-bold">
+          <label className="flex items-center my-2 text-lg font-bold">
             <input
               {...register("carbohydrates")}
               type="checkbox"

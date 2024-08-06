@@ -5,8 +5,6 @@ import './index.css'
 import Page2 from "./pages/Page2.tsx";
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
-
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <HashRouter>
