@@ -12,6 +12,7 @@ import { createChosenMetricsObject } from "../utils/displayMetricsHelpers";
 
 //comp1 = stats display
 //comp2 = tbd but prob some kinda visualization of a chart and a health rating score for the user to gauge how healthy the dish is
+// const LazyDisplayMetrics = lazy(() => import("../components/DisplayMetrics"));
 export default function Page2() {
   const [response, setResponse] = useState("");
 
@@ -42,6 +43,7 @@ export default function Page2() {
         chosenMetrics={formValues}
         aiResponse={response}
       />
+
       <Graph aiResponse={response} />
       <div className="w-full">
         <Link to="/">
