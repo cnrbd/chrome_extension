@@ -14,14 +14,7 @@ export default function App() {
   const [currentTabUrl, setCurrentTabUrl] = useState<string>("");
   const [html, setHtml] = useState<string>("");
   const [ingredients, setIngredients] = useState<string[]>([]);
-  // const [formValues, setFormValues] = useState<CheckboxFormValues>({
-  //   calories: false,
-  //   carbohydrates: false,
-  //   protein: false,
-  //   fat: false,
-  //   fiber: false,
-  //   sodium: false,
-  // });
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
   //async function nested in useeffect to get the current tab url
   //dependecies should have the currentTabUrl since each remount should reset the currentTabUrl
@@ -34,19 +27,34 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const currentTabHTML = async () => {
-      const html = await scrapeRecipePage(currentTabUrl);
-      setHtml(html);
-    };
-    currentTabHTML();
+    if (currentTabUrl) {
+      console.log("hello");
+      const currentTabHTML = async () => {
+        try {
+          const html = await scrapeRecipePage(currentTabUrl);
+          if (html.includes("[Error]: 403 Client Error")) {
+            console.log("error");
+            setIsDisabled(true);
+          } else {
+            setHtml(html);
+          }
+        } catch (error) {
+          setIsDisabled(true);
+        }
+      };
+      currentTabHTML();
+      console.log("disbaleing: ", isDisabled);
+    }
   }, [currentTabUrl]);
 
   useEffect(() => {
-    const currentTabIngredients = () => {
-      const ingredientArr = scrapeIngredients(html);
-      setIngredients(ingredientArr);
-    };
-    currentTabIngredients();
+    if (html) {
+      const currentTabIngredients = () => {
+        const ingredientArr = scrapeIngredients(html);
+        setIngredients(ingredientArr);
+      };
+      currentTabIngredients();
+    }
   }, [html]);
 
   return (
@@ -66,7 +74,7 @@ export default function App() {
       <hr className="h-px bg-gray-400 mb-2" />
 
       <Checkbox
-        button={<Button> Calculate </Button>}
+        button={<Button isDisabled={isDisabled}> Calculate </Button>}
         navigateFunction={navigate}
         ingredients={ingredients}
       />
