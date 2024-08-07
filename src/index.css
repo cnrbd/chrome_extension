@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "BonheurRoyale";
+    src: url('./assets/fonts/BonheurRoyale.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "LibreBodoni";
+    src: url('./assets/fonts/LibreBodoni.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "BodoniModa";
+    src: url('./assets/fonts/BodoniModa.ttf') format('truetype');
+}
+
+.checkbox {
+    @apply mr-3 appearance-none h-[1.35rem] w-[1.35rem] border rounded-lg border-black checked:bg-primary checked:border-green-600
+}
+
+::-webkit-scrollbar {
+    display: none
+}

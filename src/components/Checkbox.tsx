@@ -52,31 +52,33 @@ export default function Checkbox({
     });
   };
 
+
+
   return (
     <>
-      <h2 className="text-lg">Please select the metrics to calculate:</h2>
+      <h2 className="text-lg font-LibreBodoni font-bold">Please select the <span className="underline">metrics</span> to calculate:</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-yellow-100 flex flex-col my-3 p-2 "
+        className="flex flex-col mb-2 p-2 font-LibreBodoni"
       >
         <div className="flex justify-start items-center">
-          <label className=" flex items-center my-2 text-lg font-bold">
+          <label className="flex items-center my-2 text-lg font-bold">
             <input
               {...register("calories")}
               type="checkbox"
               name="calories"
-              className="mr-3"
+              className="checkbox"
             />
             Calories
           </label>
         </div>
         <div className="flex justify-start items-center">
-          <label className=" flex items-center my-2 text-lg font-bold">
+          <label className="flex items-center my-2 text-lg font-bold">
             <input
               {...register("carbohydrates")}
               type="checkbox"
               name="carbohydrates"
-              className="mr-3"
+              className="checkbox"
             />
             Carbohydrates
           </label>
@@ -88,7 +90,7 @@ export default function Checkbox({
               {...register("protein")}
               type="checkbox"
               name="protein"
-              className="mr-3"
+              className="checkbox"
             />
             Protein
           </label>
@@ -99,7 +101,7 @@ export default function Checkbox({
               {...register("fat")}
               type="checkbox"
               name="fat"
-              className="mr-3"
+              className="checkbox"
             />
             Fat
           </label>
@@ -110,7 +112,7 @@ export default function Checkbox({
               {...register("fiber")}
               type="checkbox"
               name="fiber"
-              className="mr-3"
+              className="checkbox"
             />
             Fiber
           </label>
@@ -121,7 +123,7 @@ export default function Checkbox({
               {...register("sodium")}
               type="checkbox"
               name="sodium"
-              className="mr-3"
+              className="checkbox"
             />
             Sodium
           </label>
