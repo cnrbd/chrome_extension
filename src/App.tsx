@@ -50,7 +50,7 @@ export default function App() {
   }, [html]);
 
   return (
-    <div className=" flex flex-col px-5 items-stretch">
+    <div className="flex flex-col px-5 items-stretch">
       <Header />
       {/* {currentTabUrl && <p>link: {currentTabUrl}</p>} */}
       {/* {html && <p>html: {html}</p>} */}

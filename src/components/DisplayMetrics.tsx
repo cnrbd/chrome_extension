@@ -41,11 +41,11 @@ export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
       {/* {chosenMetrics && JSON.stringify(chosenMetrics)} */}
       {/* {responseJSON && <p>response: {JSON.stringify(responseJSON)}</p>} */}
       {responseJSON && (
-        <ul className="w-full h-44 overflow-y-auto bg-lime-600 px-1 py-1">
+        <ul className="w-full overflow-y-auto">
           {Object.entries(responseJSON).map(([key, value]) => (
-            <div key={key}>
-              <h1 className="text-lg font-bold">{key}:</h1>
-              <ul className="list-disc pl-5">
+            <div key={key} className="m-4">
+              <h1 className="text-lg font-LibreBodoni text-white">{key}:</h1>
+              <ul className="list-disc pl-5 font-BodoniModa text-white ">
                 {value.map((stat, index) => (
                   <li key={index}>{stat}</li>
                 ))}
