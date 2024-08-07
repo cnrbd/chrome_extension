@@ -8,10 +8,11 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { stats } from "../openai/test";
 import { createChosenMetricsObject } from "../utils/displayMetricsHelpers";
-// import { lazy } from "react";
+
 
 //comp1 = stats display
 //comp2 = tbd but prob some kinda visualization of a chart and a health rating score for the user to gauge how healthy the dish is
+
 export default function Page2() {
   const [response, setResponse] = useState("");
 
@@ -42,6 +43,7 @@ export default function Page2() {
         chosenMetrics={formValues}
         aiResponse={response}
       />
+
       <Graph aiResponse={response} />
       <div className="w-full">
         <Link to="/">

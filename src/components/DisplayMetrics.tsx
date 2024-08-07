@@ -7,6 +7,7 @@ import {
   stringObjectToJSON,
   keysToUpperCase,
 } from "../utils/displayMetricsHelpers";
+import { ClipLoader } from "react-spinners";
 
 type DisplayMetricsProps = {
   ingredients: string[];
@@ -15,12 +16,10 @@ type DisplayMetricsProps = {
 };
 
 export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
-
   const [responseJSON, setResponseJSON] = useState<{ [key: string]: string[] }>(
     {}
   );
-
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (aiResponse) {
       try {
@@ -33,6 +32,9 @@ export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
         console.error("Failed to parse response JSON:", error);
       }
     }
+    if (Object.keys(responseJSON).length > 0) {
+      setLoading(false);
+    }
   }, [aiResponse]);
 
   return (
@@ -40,7 +42,7 @@ export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
       {/* {ingredients} */}
       {/* {chosenMetrics && JSON.stringify(chosenMetrics)} */}
       {/* {responseJSON && <p>response: {JSON.stringify(responseJSON)}</p>} */}
-      {responseJSON && (
+      {Object.keys(responseJSON).length > 0 ? (
         <ul className="w-full h-44 overflow-y-auto bg-lime-600 px-1 py-1">
           {Object.entries(responseJSON).map(([key, value]) => (
             <div key={key}>
@@ -53,6 +55,16 @@ export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
             </div>
           ))}
         </ul>
+      ) : (
+        <div className="flex items-center justify-center">
+          <ClipLoader
+            color={"red"}
+            loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
       )}
     </div>
   );
