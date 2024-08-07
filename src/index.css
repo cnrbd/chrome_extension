@@ -18,7 +18,7 @@
 }
 
 .checkbox {
-    @apply mr-3 appearance-none h-[1.35rem] w-[1.35rem] border rounded-lg border-black
+    @apply mr-3 appearance-none h-[1.35rem] w-[1.35rem] border rounded-lg border-black checked:bg-primary checked:border-green-600
 }
 
 ::-webkit-scrollbar {

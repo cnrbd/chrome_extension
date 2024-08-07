@@ -69,7 +69,6 @@ export default function Checkbox({
               name="calories"
               className="checkbox"
             />
-            <p className="text-xs">/</p>
             Calories
           </label>
         </div>
@@ -79,7 +78,7 @@ export default function Checkbox({
               {...register("carbohydrates")}
               type="checkbox"
               name="carbohydrates"
-              className="mr-3"
+              className="checkbox"
             />
             Carbohydrates
           </label>
@@ -91,7 +90,7 @@ export default function Checkbox({
               {...register("protein")}
               type="checkbox"
               name="protein"
-              className="mr-3"
+              className="checkbox"
             />
             Protein
           </label>
@@ -102,7 +101,7 @@ export default function Checkbox({
               {...register("fat")}
               type="checkbox"
               name="fat"
-              className="mr-3"
+              className="checkbox"
             />
             Fat
           </label>
@@ -113,7 +112,7 @@ export default function Checkbox({
               {...register("fiber")}
               type="checkbox"
               name="fiber"
-              className="mr-3"
+              className="checkbox"
             />
             Fiber
           </label>
@@ -124,7 +123,7 @@ export default function Checkbox({
               {...register("sodium")}
               type="checkbox"
               name="sodium"
-              className="mr-3"
+              className="checkbox"
             />
             Sodium
           </label>
