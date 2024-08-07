@@ -56,14 +56,15 @@ export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
           ))}
         </ul>
       ) : (
-        <ClipLoader
-          color={"red"}
-          loading={loading}
-          size={100}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-          className="flex justify-center items-center"
-        />
+        <div className="flex items-center justify-center">
+          <ClipLoader
+            color={"red"}
+            loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
       )}
     </div>
   );

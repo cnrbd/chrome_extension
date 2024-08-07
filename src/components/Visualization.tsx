@@ -68,13 +68,14 @@ export default function Graph({ aiResponse }: GraphProps) {
       className="text-break"
     />
   ) : (
-    <GridLoader
-      color={"red"}
-      loading={loading}
-      size={15}
-      aria-label="Loading Spinner"
-      data-testid="loader"
-      className="flex justify-center items-center"
-    />
+    <div className="flex items-center justify-center">
+      <GridLoader
+        color={"red"}
+        loading={loading}
+        size={15}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   );
 }
