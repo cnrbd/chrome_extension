@@ -64,7 +64,11 @@ export default function App() {
       {/* {html && <p>html: {html}</p>} */}
       <div className="flex justify-center w-full bg-primary border mt-1 mb-3 rounded-lg rounded-br-7xl">
         <p className="text-2xs font-BodoniModa font-thin text-white m-3">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Our tool promotes transparency about food statistics, ensuring you
+          understand what your food stats actually mean. Know more about the
+          nutritional content of your meals and make informed dietary choices
+          with our detailed breakdowns. Empower yourself with the knowledge to
+          lead a healthier lifestyle.
         </p>
       </div>
       <hr className="h-1 bg-divider mb-2" />

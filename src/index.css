@@ -14,7 +14,7 @@
 
 @font-face {
     font-family: "BodoniModa";
-    src: url('./assets/fonts/BodoniModa.ttf') format('truetype');
+    src: url('./assets/fonts/CharterRegular.ttf') format('truetype');
 }
 
 .checkbox {
