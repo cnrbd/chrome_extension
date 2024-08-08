@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { stats } from "../openai/test";
 import { createChosenMetricsObject } from "../utils/displayMetricsHelpers";
-import barchart from "../assets/barchart.png"
+// import barchart from "../assets/barchart.png"
 
 
 //comp1 = stats display
@@ -40,7 +40,11 @@ export default function Page2() {
       </p>
 
       <div className="flex flex-col items-center justify-center w-full bg-primary rounded-3xl">
-        <div className={`flex w-16 h-16 border-white border-4 rounded-full border-r-0 border-t-0 animate-spin my-8 ${response === "" ? "" : "hidden"}`} />
+        <div
+          className={`flex w-16 h-16 border-white border-4 rounded-full border-r-0 border-t-0 animate-spin my-8 ${
+            response === "" ? "" : "hidden"
+          }`}
+        />
         <DisplayMetrics
           ingredients={ingredients}
           chosenMetrics={formValues}
@@ -49,7 +53,6 @@ export default function Page2() {
       </div>
 
       <div className="flex flex-col items-center justify-center w-full">
-        <img src={barchart} className={`w-10/12 mt-8 z-0 ${response === "" ? "" : "hidden"}`} />
         <Graph aiResponse={response} />
       </div>
 

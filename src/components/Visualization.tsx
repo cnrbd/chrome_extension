@@ -5,7 +5,8 @@ import {
   extractStats,
   calculatePercentage,
 } from "../utils/visualizationHelpers";
-import { GridLoader } from "react-spinners";
+
+import barchart from "../assets/barchart.png";
 type GraphProps = {
   aiResponse: string;
 };
@@ -15,7 +16,6 @@ export default function Graph({ aiResponse }: GraphProps) {
   const [responseJSON, setResponseJSON] = useState<{ [key: string]: string[] }>(
     {}
   );
-  const [loading, setLoading] = useState(true);
 
   const [keys, setKeys] = useState<string[]>([]);
   useEffect(() => {
@@ -37,9 +37,6 @@ export default function Graph({ aiResponse }: GraphProps) {
       setStatsArray(tempArray);
       console.log(statsArray);
     }
-    if (statsArray.length > 0) {
-      setLoading(false);
-    }
   }, [responseJSON]);
 
   return aiResponse && responseJSON ? (
@@ -50,8 +47,8 @@ export default function Graph({ aiResponse }: GraphProps) {
           y: calculatePercentage(statsArray, keys),
           type: "bar",
           marker: {
-            color: "#6A9C5E"
-          }
+            color: "#6A9C5E",
+          },
         },
       ]}
       layout={{
@@ -59,7 +56,7 @@ export default function Graph({ aiResponse }: GraphProps) {
         width: 400,
         height: 400,
         font: {
-          family: "LibreBodoni"
+          family: "LibreBodoni",
         },
         xaxis: {
           title: "Metrics",
@@ -74,13 +71,6 @@ export default function Graph({ aiResponse }: GraphProps) {
       className="text-break"
     />
   ) : (
-    <GridLoader
-      color={"green"}
-      loading={loading}
-      size={15}
-      aria-label="Loading Spinner"
-      data-testid="loader"
-      className="z-50 absolute"
-    />
+    <img src={barchart} className="w-10/12 mt-8 z-0 " />
   );
 }
