@@ -52,15 +52,15 @@ export default function App() {
     if (html) {
       const currentTabIngredients = () => {
         const ingredientArr = scrapeIngredients(html);
-        setIngredients(ingredientArr);
+        if (!ingredientArr.length) {
+          console.log("missing ing");
+          setError_message("This is likely not a recipe page");
+          setIsDisabled(true);
+        } else {
+          setIngredients(ingredientArr);
+        }
       };
       currentTabIngredients();
-
-      if (!ingredients.length) {
-        console.log("missing ing");
-        setError_message("This is likely not a recipe page");
-        setIsDisabled(true);
-      }
     }
   }, [html]);
 
