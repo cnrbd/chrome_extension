@@ -49,12 +49,18 @@ export default function Graph({ aiResponse }: GraphProps) {
           x: keys,
           y: calculatePercentage(statsArray, keys),
           type: "bar",
+          marker: {
+            color: "#6A9C5E"
+          }
         },
       ]}
       layout={{
         title: "Recipe Metrics vs Recommended",
         width: 400,
         height: 400,
+        font: {
+          family: "LibreBodoni"
+        },
         xaxis: {
           title: "Metrics",
         },
@@ -68,14 +74,13 @@ export default function Graph({ aiResponse }: GraphProps) {
       className="text-break"
     />
   ) : (
-    <div className="flex items-center justify-center">
-      <GridLoader
-        color={"red"}
-        loading={loading}
-        size={15}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-    </div>
+    <GridLoader
+      color={"green"}
+      loading={loading}
+      size={15}
+      aria-label="Loading Spinner"
+      data-testid="loader"
+      className="z-50 absolute"
+    />
   );
 }

@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { stats } from "../openai/test";
 import { createChosenMetricsObject } from "../utils/displayMetricsHelpers";
+import barchart from "../assets/barchart.png"
 
 
 //comp1 = stats display
@@ -32,19 +33,26 @@ export default function Page2() {
     }
   }, [ingredients, formValues]);
   return (
-    <div className="flex flex-col px-5 items-center justify-center w-full">
-      <p className="my-3">
-        <Header />
-        Learn about this recipe with our AI-powered assistant
+    <div className="flex flex-col px-5 items-stretch">
+      <Header />
+      <p className="font-LibreBodoni mt-3 mb-2">
+        —Learn about this recipe with our AI-powered assistant—
       </p>
 
-      <DisplayMetrics
-        ingredients={ingredients}
-        chosenMetrics={formValues}
-        aiResponse={response}
-      />
+      <div className="flex flex-col items-center justify-center w-full bg-primary rounded-3xl">
+        <div className={`flex w-16 h-16 border-white border-4 rounded-full border-r-0 border-t-0 animate-spin my-8 ${response === "" ? "" : "hidden"}`} />
+        <DisplayMetrics
+          ingredients={ingredients}
+          chosenMetrics={formValues}
+          aiResponse={response}
+        />
+      </div>
 
-      <Graph aiResponse={response} />
+      <div className="flex flex-col items-center justify-center w-full">
+        <img src={barchart} className={`w-10/12 mt-8 z-0 ${response === "" ? "" : "hidden"}`} />
+        <Graph aiResponse={response} />
+      </div>
+
       <div className="w-full">
         <Link to="/">
           <Button> Return </Button>
