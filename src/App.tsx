@@ -15,6 +15,7 @@ export default function App() {
   const [html, setHtml] = useState<string>("");
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const [error_message, setError_message] = useState<string>("");
 
   //async function nested in useeffect to get the current tab url
   //dependecies should have the currentTabUrl since each remount should reset the currentTabUrl
@@ -35,6 +36,7 @@ export default function App() {
           if (html.includes("[Error]: 403 Client Error")) {
             console.log("error");
             setIsDisabled(true);
+            setError_message("Website is blocking our extension");
           } else {
             setHtml(html);
           }
@@ -43,7 +45,6 @@ export default function App() {
         }
       };
       currentTabHTML();
-      console.log("disbaleing: ", isDisabled);
     }
   }, [currentTabUrl]);
 
@@ -54,6 +55,12 @@ export default function App() {
         setIngredients(ingredientArr);
       };
       currentTabIngredients();
+
+      if (!ingredients.length) {
+        console.log("missing ing");
+        setError_message("This is likely not a recipe page");
+        setIsDisabled(true);
+      }
     }
   }, [html]);
 
@@ -74,7 +81,11 @@ export default function App() {
       <hr className="h-1 bg-divider mb-2" />
 
       <Checkbox
-        button={<Button isDisabled={isDisabled}> Calculate </Button>}
+        button={
+          <Button isDisabled={isDisabled} error_message={error_message}>
+            Calculate
+          </Button>
+        }
         navigateFunction={navigate}
         ingredients={ingredients}
       />
