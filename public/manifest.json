@@ -1,18 +1,17 @@
 {
-    "manifest_version": 3,
-    "name": "Hello Extensions",
-    "description": "fun",
-    "version": "1.0",
-    "action": {
-      "default_popup": "index.html"
-    },
-    "permissions" : [
-        "scripting",
-        "tabs"
-    ],
-    "host_permissions" : [
-        "http://*/*",
-        "https://*/*"
-    ]
-
-  }
+  "manifest_version": 3,
+  "name": "Calocal",
+  "description": "Our tool promotes transparency about food statistics, ensuring you understand what your food stats actually mean. Know more about the nutritional content of your meals and make informed dietary choices with our detailed breakdowns. Empower yourself with the knowledge to lead a healthier lifestyle.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
