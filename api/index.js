@@ -5,6 +5,7 @@ import cors from "cors";
 // configures dotenv to work in your application
 dotenv.config();
 const app = express();
+app.use(express.json());
 
 app.use(cors());
 
@@ -102,4 +103,4 @@ app
     throw new Error(error.message);
   });
 
-module.exports = app;
+export default app;
