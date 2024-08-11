@@ -87,7 +87,8 @@ app.post("/test", async (req, res) => {
     });
 
     const result = await response.json();
-    res.json(result);
+    console.log(result.choices[0].message.content);
+    return res.json(result.choices[0].message.content);
   } catch (error) {
     console.error("Error fetching completion: ", error);
     res.status(500).send("Server Error");
