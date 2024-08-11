@@ -28,5 +28,5 @@
   "include": [
     "src",
     "src/services/scraper.d.ts"
-, "api/index.cjs"  ]
+, "api/index.js"  ]
 }
