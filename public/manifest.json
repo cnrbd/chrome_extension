@@ -14,7 +14,8 @@
     },
     "permissions" : [
         "scripting",
-        "tabs"
+        "tabs",
+        "http://localhost:3000/*"
     ],
     "host_permissions" : [
         "http://*/*",
