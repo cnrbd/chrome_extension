@@ -56,7 +56,10 @@ export default function Checkbox({
 
   return (
     <>
-      <h2 className="text-lg font-LibreBodoni font-bold">Please select the <span className="underline">metrics</span> to calculate:</h2>
+      <h2 className="text-lg font-LibreBodoni font-bold">
+        Please select the <span className="underline">metrics</span> to
+        calculate:
+      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col mb-2 p-2 font-LibreBodoni"
@@ -128,7 +131,7 @@ export default function Checkbox({
             Sodium
           </label>
         </div>
-        {button}
+        <div className="my-4">{button}</div>
         {errors.root?.serverError && (
           <p className="text-red-500">{errors.root.serverError.message}</p>
         )}

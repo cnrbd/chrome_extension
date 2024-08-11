@@ -34,12 +34,12 @@ export default function DisplayMetrics({ aiResponse }: DisplayMetricsProps) {
   }, [aiResponse]);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full overflow-y-scroll">
       {/* {ingredients} */}
       {/* {chosenMetrics && JSON.stringify(chosenMetrics)} */}
       {/* {responseJSON && <p>response: {JSON.stringify(responseJSON)}</p>} */}
       {Object.keys(responseJSON).length > 0 && (
-        <ul className="w-full overflow-y-auto">
+        <ul className="w-full ">
           {Object.entries(responseJSON).map(([key, value]) => (
             <div key={key} className="m-4">
               <h1 className="text-lg font-LibreBodoni text-white">{key}:</h1>

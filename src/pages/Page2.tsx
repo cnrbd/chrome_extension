@@ -39,7 +39,7 @@ export default function Page2() {
         —Learn about this recipe with our AI-powered assistant—
       </p>
 
-      <div className="flex flex-col items-center justify-center w-full bg-primary rounded-3xl">
+      <div className="flex flex-col items-center justify-center w-full bg-primary rounded-3xl  h-48 p-4">
         <div
           className={`flex w-16 h-16 border-white border-4 rounded-full border-r-0 border-t-0 animate-spin my-8 ${
             response === "" ? "" : "hidden"
