@@ -11,15 +11,6 @@ app.use(cors());
 
 const PORT = process.env.PORT;
 
-// app.get("/", (request, response) => {
-//   response.status(200).send("Hello MAN");
-// });
-// app.get("/api", (request, response) => {
-//   const key = process.env.VITE_REACT_APP_API_KEY;
-
-//   response.status(200).send("Hello API " + key);
-// });
-
 app.get("/openai", async (req, res) => {
   try {
     console.log(req);
