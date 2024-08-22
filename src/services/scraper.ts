@@ -34,28 +34,27 @@ const ingredientsClassNames = [
 
 export const setApiURL = (url: string) => {
   const options = {
-    method: "POST",
-    url: "https://dripcrawler.p.rapidapi.com/",
+    method: "GET",
+    url: "https://scrapers-proxy2.p.rapidapi.com/standard",
+    params: {
+      url: `${encodeURI(url)}`,
+    },
     headers: {
       "x-rapidapi-key": "557db26a53mshc3acaf4c42ecb2ep1fdbe5jsn78d9dd306fea",
-      "x-rapidapi-host": "dripcrawler.p.rapidapi.com",
-      "Content-Type": "application/json",
-    },
-    data: {
-      url: `${encodeURI(url)}`,
-      javascript_rendering: "False",
+      "x-rapidapi-host": "scrapers-proxy2.p.rapidapi.com",
     },
   };
+
   return options;
 };
 
 export const scrapeRecipePage = async (url: string) => {
   try {
-    console.log("url: ", url);
+    console.log("URL: ", url);
     const options = setApiURL(url);
     const response = await axios.request(options);
-    console.log(response);
-    return response.data.extracted_html;
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.log("error: ", error);
   }
