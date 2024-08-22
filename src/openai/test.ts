@@ -4,7 +4,8 @@ import { MetricKeys } from "../utils/displayMetricsHelpers";
 const openAIApiKey = import.meta.env.VITE_REACT_APP_API_KEY;
 console.log(openAIApiKey);
 
-const serverUrl = "https://chrome-extension-teal.vercel.app/test";
+const serverUrl =
+  "https://chrome-extension-7w4zm6i54-phuoc-uongs-projects.vercel.app/test";
 // const openai = new OpenAI({
 //   apiKey: openAIApiKey,
 //   dangerouslyAllowBrowser: true,

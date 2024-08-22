@@ -45,7 +45,16 @@ Express calories in kcal, sodium in mg, and all other nutrients in grams. Write 
 
     const result = await response.json();
     console.log(result);
-    return res.json(result.choices[0].message.content);
+    if (result && Array.isArray(result.choices) && result.choices.length > 0) {
+      console.log(result.choices[0].message.content);
+      return res.json(result.choices[0].message.content);
+    } else {
+      console.error(
+        "Unexpected API response format or no choices returned:",
+        result
+      );
+      res.status(500).send("Unexpected API response format");
+    }
   } catch (error) {
     console.error("Error fetching completion: ", error);
     res.status(500).send("Server Error");
