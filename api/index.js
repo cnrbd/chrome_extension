@@ -42,7 +42,7 @@ Express calories in kcal, sodium in mg, and all other nutrients in grams. Write 
         temperature: 1,
       }),
     });
-
+    console.log(response);
     const result = await response.json();
     console.log(result);
     if (result && Array.isArray(result.choices) && result.choices.length > 0) {
