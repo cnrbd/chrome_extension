@@ -63,7 +63,7 @@ Express calories in kcal, sodium in mg, and all other nutrients in grams. Write 
 
 app
   .listen(3000, () => {
-    console.log("Server running at PORT: ", PORT);
+    console.log("Server running at PORT: ", 3000);
   })
   .on("error", (error) => {
     // gracefully handle error
