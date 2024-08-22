@@ -44,7 +44,7 @@ Express calories in kcal, sodium in mg, and all other nutrients in grams. Write 
     });
 
     const result = await response.json();
-    console.log(result.choices[0].message.content);
+    console.log(result);
     return res.json(result.choices[0].message.content);
   } catch (error) {
     console.error("Error fetching completion: ", error);
