@@ -2,7 +2,7 @@
 import { MetricKeys } from "../utils/displayMetricsHelpers";
 
 
-const serverUrl = "https://chrome-extension-teal.vercel.app/test";
+const serverUrl = "https://chrome-extension-5ogv.vercel.app/test";
 // const openai = new OpenAI({
 //   apiKey: openAIApiKey,
 //   dangerouslyAllowBrowser: true,
