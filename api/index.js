@@ -1,17 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import fetch from "node-fetch";
 
-// configures dotenv to work in your application
 dotenv.config();
 const app = express();
 app.use(express.json());
-
 app.use(cors());
 
-const PORT = process.env.PORT;
-
-
+const PORT = process.env.PORT || 3000;
 
 app.post("/test", async (req, res) => {
   const { ingredients, currentPrompts } = req.body;
@@ -34,40 +31,36 @@ app.post("/test", async (req, res) => {
             role: "user",
             content: `Given the following ingredients string from a recipe: ${ingredients}, answer the nutritional value questions based on the keys in the provided object: ${JSON.stringify(
               currentPrompts
-            )}. Return the result as an object with the same keys as the input object, where each key's value is an array of strings that correspond to the answers for that key. Rememeber to close and open the object with curly braces,
-Express calories in kcal, sodium in mg, and all other nutrients in grams. Write other answers in full sentences.`,
+            )}. Return the result as an object with the same keys as the input object, where each key's value is an array of strings that correspond to the answers for that key. Rememeber to close and open the object with curly braces, Express calories in kcal, sodium in mg, and all other nutrients in grams. Write other answers in full sentences.`,
           },
         ],
         max_tokens: 1000,
         temperature: 1,
       }),
     });
-    console.log(response);
+
+    if (!response.ok) {
+      throw new Error(`OpenAI API response not ok: ${response.statusText}`);
+    }
+
     const result = await response.json();
-    console.log(result);
+    console.log("OpenAI API response:", result);
+
     if (result && Array.isArray(result.choices) && result.choices.length > 0) {
       console.log(result.choices[0].message.content);
       return res.json(result.choices[0].message.content);
     } else {
-      console.error(
-        "Unexpected API response format or no choices returned:",
-        result
-      );
-      res.status(500).send("Unexpected API response format");
+      console.error("No choices found or result.choices is not an array.");
+      return res.status(500).send("Invalid response from OpenAI API");
     }
   } catch (error) {
-    console.error("Error fetching completion: ", error);
+    console.error("Error fetching completion:", error);
     res.status(500).send("Server Error");
   }
 });
 
-app
-  .listen(3000, () => {
-    console.log("Server running at PORT: ", 3000);
-  })
-  .on("error", (error) => {
-    // gracefully handle error
-    throw new Error(error.message);
-  });
+app.listen(PORT, () => {
+  console.log(`Server running at PORT: ${PORT}`);
+});
 
 export default app;
