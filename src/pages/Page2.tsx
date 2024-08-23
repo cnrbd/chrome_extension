@@ -21,7 +21,7 @@ export default function Page2() {
   useEffect(() => {
     if (formValues && ingredients) {
       const aiResponse = async () => {
-        console.log("being passed: ", currentPrompts);
+        console.log("being passed: ", typeof ingredients);
         const response = await stats(ingredients, currentPrompts);
         console.log("response from page2: ", response);
         setResponse(response ?? "");

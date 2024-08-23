@@ -49,8 +49,8 @@ export const stats = async (
   currentPrompts: { [key in MetricKeys]?: string[] }
 ) => {
   try {
-    console.log(`INGREDIENTS: ${ingredients}`);
-    console.log(`CURRENT PROMPTS: ${currentPrompts}`);
+    console.log(`INGREDIENTS: ${typeof ingredients}`);
+    console.log(`CURRENT PROMPTS: ${typeof currentPrompts}`);
     const response = await fetch(serverUrl, {
       method: "POST",
       headers: {
