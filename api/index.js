@@ -60,6 +60,7 @@ app.post("/test", async (req, res) => {
 });
 
 app.get("/openai", async (req, res) => {
+  console.log(process.env.OPENAI_API_KEY);
   try {
     console.log(req);
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
