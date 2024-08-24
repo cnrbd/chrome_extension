@@ -113,8 +113,7 @@ app.get("/groq", async (req, res) => {
     })
     .then((chatCompletion) => {
       console.log(chatCompletion.choices[0]?.message?.content || "");
-      const result = completion.json();
-      res.status(200).json(result);
+      res.status(200).json(chatCompletion.json());
     });
 
 });
