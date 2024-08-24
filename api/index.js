@@ -99,7 +99,7 @@ app.get("/openai", async (req, res) => {
   }
 });
 
-app.post("/groq", async (req, res) => {
+app.get("/groq", async (req, res) => {
   console.log(process.env.OPENAI_API_KEY);
   const completion = await groq.chat.completions
     .create({
@@ -115,7 +115,7 @@ app.post("/groq", async (req, res) => {
       console.log(chatCompletion.choices[0]?.message?.content || "");
     });
   const result = await completion.json();
-  res.status(200).json(result.choices[0].message.content);
+  res.status(200).json(result);
 });
 
 
