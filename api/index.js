@@ -97,6 +97,54 @@ app.get("/openai", async (req, res) => {
   }
 });
 
+
+app.post("groq", async (req, res) => {
+  try {
+    console.log("req ", req);
+    const response = await fetch(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${env.OPENAI_API_KEY}`,
+        },
+        body: JSON.stringify({
+          messages: [
+            {
+              role: "system",
+              content:
+                "You are a helpful assistant in the areas of global threat intelligence and osint. Please only return valid JSON and no other text.",
+            },
+            {
+              role: "user",
+              content: prompt,
+            },
+          ],
+          model: "llama3-8b-8192",
+          temperature: 1,
+          // max_tokens: 1024,
+          top_p: 1,
+          stream: false,
+          stop: null,
+        }),
+      }
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data.choices[0].message?.content, "<---- groq.com api");
+
+      return JSON.parse(data.choices[0].message?.content);
+    } else {
+      console.error(await response.json());
+    }
+  } catch (error) {
+    console.error("Error fetching completion: ", error);
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running at PORT: ${PORT}`);
 });
