@@ -142,8 +142,8 @@ app.post("/test", async (req, res) => {
     });
 
     // Successful completion, return the completion object
-    console.log(completion);
-    return res.json(completion);
+    console.log(completion.choices[0]?.message?.content);
+    return res.json(completion.choices[0]?.message?.content);
   } catch (error) {
     console.error("Error processing request:", error);
     // Send appropriate error response to client
