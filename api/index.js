@@ -98,7 +98,7 @@ app.get("/openai", async (req, res) => {
 });
 
 
-app.post("groq", async (req, res) => {
+app.post("/groq", async (req, res) => {
   try {
     console.log("req ", req);
     const response = await fetch(
