@@ -32,27 +32,24 @@ export default function Checkbox({
   } = useForm<CheckboxFormValues>();
 
   const onSubmit = (data: CheckboxFormValues) => {
-  const oneSelected = Object.values(data).some((value) => value === true);
+    const oneSelected = Object.values(data).some((value) => value === true);
 
-  if (!oneSelected) {
-    console.log("selected: ", oneSelected);
-    setError("root.serverError", {
-      type: "custom",
-      message: "Please select at least one metric",
-    });
-    console.log(errors.root?.serverError);
-    return;
-  }
+    if (!oneSelected) {
+      console.log("selected: ", oneSelected);
+      setError("root", {
+        type: "custom",
+        message: "Please select at least one metric",
+      });
+      console.log("errors", errors.root?.message);
+      return;
+    }
 
-    clearErrors("root.serverError");
+    clearErrors("root");
     console.log("data", data);
-    // setFunction(data);
     navigateFunction("/Page2", {
       state: { formValues: data, ingredients },
     });
   };
-
-
 
   return (
     <>
@@ -132,9 +129,7 @@ export default function Checkbox({
           </label>
         </div>
         <div className="my-4">{button}</div>
-        {errors.root?.serverError && (
-          <p className="text-red-500">{errors.root.serverError.message}</p>
-        )}
+        {errors.root && <p className="text-red-500">{errors.root?.message}</p>}
       </form>
     </>
   );
