@@ -113,14 +113,14 @@ app.get("/groq", async (req, res) => {
           messages: [
             {
               role: "system",
-              content: "what is 1+1",
+              content: "you are a teacher",
             },
             {
               role: "user",
-              content: prompt,
+              content: "what is 1+1",
             },
           ],
-          model: "llama3-8b-8192",
+          model: "mixtral-8x7b-32768",
           temperature: 1,
           // max_tokens: 1024,
           top_p: 1,
