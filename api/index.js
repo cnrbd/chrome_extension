@@ -136,7 +136,7 @@ app.post("/test", async (req, res) => {
           )}. Return the result as an object with the same keys as the input object, where each key's value is an array of strings that correspond to the answers for that key. Rememeber to close and open the object with curly braces, Express calories in kcal, sodium in mg, and all other nutrients in grams. Write other answers in full sentences.`,
         },
       ],
-      model: "mixtral-8x7b-32768",
+      model: "llama-guard-3-8b",
       max_tokens: 1000,
       temperature: 1,
     });
