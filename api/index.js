@@ -132,7 +132,7 @@ app.post("/test", async (req, res) => {
 Express calories in kcal, sodium in mg, and all other nutrients in grams. Write other answers in full sentences.`,
         },
       ],
-      model: "gemma2-9b-it",
+      model: "llama3-groq-70b-8192-tool-use-preview",
       max_tokens: 1000,
       temperature: 1,
     });
