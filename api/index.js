@@ -113,9 +113,10 @@ app.get("/groq", async (req, res) => {
     })
     .then((chatCompletion) => {
       console.log(chatCompletion.choices[0]?.message?.content || "");
+      const result = completion.json();
+      res.status(200).json(result);
     });
-  const result = await completion.json();
-  res.status(200).json(result);
+
 });
 
 
