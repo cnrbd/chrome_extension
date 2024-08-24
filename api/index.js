@@ -2,11 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import fetch from "node-fetch";
+import Groq from "groq-sdk";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
+const groq = new Groq({ apiKey: process.env.OPENAI_API_KEY });
 
 const PORT = process.env.PORT || 3000;
 
@@ -97,45 +99,21 @@ app.get("/openai", async (req, res) => {
   }
 });
 
-
-app.get("/groq", async (req, res) => {
-  try {
-    console.log("req ", req);
-    const response = await fetch(
-      "https://api.groq.com/openai/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${env.OPENAI_API_KEY}`,
+app.get("/groq", async () => {
+  console.log(process.env.OPENAI_API_KEY);
+  const completion = await groq.chat.completions
+    .create({
+      messages: [
+        {
+          role: "user",
+          content: "what is 1+1",
         },
-        body: JSON.stringify({
-          messages: [
-            {
-              role: "system",
-              content: "you are a teacher",
-            },
-            {
-              role: "user",
-              content: "what is 1+1",
-            },
-          ],
-          model: "mixtral-8x7b-32768",
-          temperature: 1,
-          // max_tokens: 1024,
-          top_p: 1,
-          stream: false,
-          stop: null,
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log("result: ", result);
-    console.log("ans: ", result.choices[0].message.content);
-    res.status(200).json(result.choices[0].message.content);
-  } catch (error) {
-    console.error("Error fetching completion: ", error);
-  }
+      ],
+      model: "mixtral-8x7b-32768",
+    })
+    .then((chatCompletion) => {
+      console.log(chatCompletion.choices[0]?.message?.content || "");
+    });
 });
 
 
