@@ -1,7 +1,7 @@
 {
 "calories" :[
     "How many calories are all the ingredients in this recipe, display the total calories? Output only one value which is the number of calories.",
-    "If you were to compare this recipe's total calories to the suggested amount of calories in a meal for an average person, what percent more or less of the daily recommended caloric intake would this recipe be?"
+    "Does this dish have too many calories. Answer without giving a number?"
 ],
 "carbohydrates" : [
     "How much carbohydrates are all the ingredients in this recipe, display the total amount of carbohydrates? Output only one value which is the number of carbohydrates.",
