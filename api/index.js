@@ -125,11 +125,16 @@ app.post("/test", async (req, res) => {
     const completion = await groq.chat.completions.create({
       messages: [
         {
+          role: "system",
+          content:
+            "You are a dietician that has access nutritional values of food from recipes by USDA standards",
+        },
+        {
           role: "user",
           content: `Given the following ingredients string from a recipe: ${ingredients}, answer the nutritional value questions based on the keys in the provided object: ${JSON.stringify(
             currentPrompts
           )}. Return the result as a JSON with the same keys as the input object, where each key's value is an array of strings that correspond to the answers for that key. Rememeber to close and open the object with curly braces,
-When asked how much of a nutrient is there, xxpress calories in kcal, sodium in mg, and all other nutrients in grams and output only one VALUE. Write other answers in full sentences.`,
+When asked how much of a nutrient is there, xxpress calories in kcal, sodium in mg, and all other nutrients in grams and output only one VALUE which is the numeric answer. Write other answers in full sentences.`,
         },
       ],
       model: "llama3-groq-70b-8192-tool-use-preview",
