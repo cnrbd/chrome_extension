@@ -113,8 +113,7 @@ app.get("/groq", async (req, res) => {
           messages: [
             {
               role: "system",
-              content:
-                "You are a helpful assistant in the areas of global threat intelligence and osint. Please only return valid JSON and no other text.",
+              content: "what is 1+1",
             },
             {
               role: "user",
@@ -130,15 +129,10 @@ app.get("/groq", async (req, res) => {
         }),
       }
     );
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data.choices[0].message?.content, "<---- groq.com api");
-
-      return JSON.parse(data.choices[0].message?.content);
-    } else {
-      console.error(await response.json());
-    }
+    const result = await response.json();
+    console.log("result: ", result);
+    console.log("ans: ", result.choices[0].message.content);
+    res.status(200).json(result.choices[0].message.content);
   } catch (error) {
     console.error("Error fetching completion: ", error);
   }
