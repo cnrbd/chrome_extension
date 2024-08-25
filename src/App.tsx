@@ -53,7 +53,6 @@ export default function App() {
       const currentTabIngredients = () => {
         const ingredientArr = scrapeIngredients(html);
         if (!ingredientArr.length) {
-          console.log("missing ing");
           setError_message("This is likely not a recipe page");
           setIsDisabled(true);
         } else {
