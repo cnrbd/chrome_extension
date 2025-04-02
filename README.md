@@ -35,10 +35,17 @@
 2. **Navigate to the Project Directory:**
   ```bash
   cd chrome_extension
+  ```
 
 3. **Install Dependencies:**
   ```bash
   npm install
+  ```
+
+4. **Build the Extension:**
+  ```bash
+  npm run build
+  ```
 
 
 
