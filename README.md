@@ -45,6 +45,7 @@
 4. **Build the Extension:**
   ```bash
   npm run build
+  ````
 
 
 The actual chrome extension link on the chrome store: https://chromewebstore.google.com/detail/calocal/ilofgkmdaajnkbbgogakoodnojpfnogk
