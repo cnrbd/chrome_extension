@@ -1,31 +1,37 @@
-# React + TypeScript + Vite
+# CaloCal Chrome Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**CaloCal** is a Chrome extension designed to present nutritional statistics on recipe pages. Built with modern web technologies, it offers users detailed insights into the nutritional content of recipes they explore online.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Nutritional Analysis:** Automatically displays nutritional information for recipes found on various websites.
+- **Web Scraping:** Utilizes Chrome API and Cheerio/jQuery to extract ingredient data directly from recipe pages.
+- **Backend Integration:** Employs an Express-based proxy backend to facilitate secure requests to the Groq API.
+- **Data Visualization:** Presents nutritional data retrieved from Llama 3 in interactive graphical formats using Plotly for enhanced transparency and user experience.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend:**
+  - TypeScript
+  - React
+  - Vite
+  - Chrome API
+  - Cheerio/jQuery
+- **Backend:**
+  - Express
+  - Groq API
+  - Llama 3
+- **Data Visualization:**
+  - Plotly
+- **Design:**
+  - Figma
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/cnrbd/chrome_extension.git
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# -chrome_extension
+2. **Navigate to the Project Directory:**
+```bash
+cd chrome_extension
