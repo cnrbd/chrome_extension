@@ -33,5 +33,13 @@
    git clone https://github.com/cnrbd/chrome_extension.git
 
 2. **Navigate to the Project Directory:**
-```bash
-cd chrome_extension
+  ```bash
+  cd chrome_extension
+
+3. **Install Dependencies:**
+  ```bash
+  npm install
+
+
+
+
